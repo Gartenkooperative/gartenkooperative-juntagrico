@@ -20,6 +20,7 @@ ALLOWED_HOSTS = ['gartenkoop.juntagrico.science', 'localhost',]
 # Application definition
 
 INSTALLED_APPS = [
+    'gartenkoop',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -31,7 +32,6 @@ INSTALLED_APPS = [
     'impersonate',
     'crispy_forms',
     'adminsortable2',
-    'gartenkoop',
     'polymorphic',
 ]
 
@@ -75,6 +75,9 @@ WSGI_APPLICATION = 'gartenkoop.wsgi.application'
 
 
 LANGUAGE_CODE = 'de'
+
+USE_TZ = True
+TIME_ZONE = 'Europe/Zurich'
 
 SITE_ID = 1
 
@@ -156,19 +159,69 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 """
 ORGANISATION_NAME = "Gartenkooperative"
 ORGANISATION_LONG_NAME = "Gartenkooperative"
-ORGANISATION_ADDRESS = {"name":"Gartenkooperative", 
+ORGANISATION_ADDRESS = {"name":"Gartenkooperative Region Liechtenstein-Werdenberg e.G.", 
             "street" : "Birkenweg",
             "number" : "6",
             "zip" : "9490",
             "city" : "Vaduz",
             "extra" : "Postfach 284"}
-ORGANISATION_BANK_CONNECTION = {"PC" : "-",
+ORGANISATION_BANK_CONNECTION = {"PC" : "",
             "IBAN" : "LI13 0880 0548 1075 5200 1",
             "BIC" : "LILALI2XXXX",
-            "NAME" : "-",
+            "NAME" : "",
             "ESR" : ""}
 SHARE_PRICE = "250"
 
 INFO_EMAIL = "info@gartenkooperative.li"
-SERVER_URL = "www.gartenkoop.org"
-STYLES = {'static': ['/static/demo/css/customize.css']}
+SERVER_URL = "meine.gartenkooperative.li"
+STYLES = {'static': ['/static/gartenkoop/css/customize.css']}
+
+BUSINESS_REGULATIONS = 'https://www.gartenkooperative.li/wp-content/uploads/171012_Betriebsreglement-der-Genossenschaft-Gartenkooperative-Region-Liechtenstein-Werdenberg.pdf'
+BYLAWS = 'https://www.gartenkooperative.li/wp-content/uploads/2015/11/150226StatutenGartenkooperative.pdf'
+
+MAIL_TEMPLATE = 'mails/email.html'
+
+# needed?
+FAQ_DOC = '/static/juntagrico/doc/fac.pdf'
+EXTRA_SUB_INFO = '/static/juntagrico/doc/extra_sub_info.pdf'
+
+SHARE_PRICE = '250'
+CURRENCY = 'CHF'
+
+ASSIGNMENT_UNIT = 'HOURS'
+
+DEPOT_LIST_GENERATION_DAYS = [0,1,2,3,4,5,6]	
+
+BUSINESS_YEAR_START = {'day':1, 'month':1}
+BUSINESS_YEAR_CANCELATION_MONTH = 12
+
+# Don't allow external signup
+ENABLE_REGISTRATION = False
+
+# USe a custom mailer that only sends to max 20 recipients at a time in the bcc, to or cc lists.
+DEFAULT_MAILER = 'gartenkoop.gkmailer.Mailer'
+
+# Send server emails from this address rather than root@localhost...
+SERVER_EMAIL = 'info@gartenkooperative.li'
+
+# TODO: add admins and managers
+
+
+IMAGES = {
+    'status_100': '/static/juntagrico/img/status_100.png',
+    'status_75': '/static/juntagrico/img/status_75.png',
+    'status_50': '/static/juntagrico/img/status_50.png',
+    'status_25': '/static/juntagrico/img/status_25.png',
+    'status_0': '/static/juntagrico/img/status_0.png',
+    'single_full': '/static/juntagrico/img/single_full.png',
+    'single_empty': '/static/juntagrico/img/single_empty.png',
+    'single_core': '/static/juntagrico/img/single_core.png',
+    'core': '/static/juntagrico/img/core.png',
+}
+
+# 1.4 settings
+
+ADMINPORTAL_NAME = 'meine.gartekooperative'
+ADMINPORTAL_SERVER_URL = 'meine.gartenkooperative.li'
+STYLE_SHEET = '/static/gartenkoop/css/customize.css'
+

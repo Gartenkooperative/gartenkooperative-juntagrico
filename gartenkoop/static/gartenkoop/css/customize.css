@@ -1,8 +1,14 @@
-.juntagrico-logo {
-    /* uncomment the next line and add your logo in the img folder */
-    /* background: url(/static/gartenkoop/img/logo.png) no-repeat 0 0; */
-    background-size: contain;
+.juntagrico_logo {
+    background: url(https://www.gartenkooperative.li/wp-content/uploads/GartenLogo.jpg) 0 0px;
     display: inline-block;
-    width: 580px;
-    height: 161px;
+    width: 100%;
+    background-size: contain;    
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 201px;
 }
+
+div.header_content {
+    text-align: right;
+}
+
