@@ -190,9 +190,9 @@ CURRENCY = 'CHF'
 
 ASSIGNMENT_UNIT = 'HOURS'
 
-DEPOT_LIST_GENERATION_DAYS = [0,1,2,3,4,5,6]	
+DEPOT_LIST_GENERATION_DAYS = [0, 1, 2, 3, 4, 5, 6]
 
-BUSINESS_YEAR_START = {'day':1, 'month':1}
+BUSINESS_YEAR_START = {'day': 1, 'month': 1}
 BUSINESS_YEAR_CANCELATION_MONTH = 12
 
 # Don't allow external signup
@@ -204,8 +204,9 @@ DEFAULT_MAILER = 'gartenkoop.gkmailer.Mailer'
 # Send server emails from this address rather than root@localhost...
 SERVER_EMAIL = 'info@gartenkooperative.li'
 
-# TODO: add admins and managers
-
+ADMINS = (
+    ('Gako Admin', os.environ.get('GAKO_ADMIN_EMAIL'))
+)
 
 IMAGES = {
     'status_100': '/static/juntagrico/img/status_100.png',
@@ -217,6 +218,10 @@ IMAGES = {
     'single_empty': '/static/juntagrico/img/single_empty.png',
     'single_core': '/static/juntagrico/img/single_core.png',
     'core': '/static/juntagrico/img/core.png',
+}
+
+IMPERSONATE = {
+    'ALLOW_SUPERUSER': True
 }
 
 # 1.4 settings
