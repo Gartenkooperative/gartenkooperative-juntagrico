@@ -1,4 +1,4 @@
 #juntagrico==1.4.0
-git+https://github.com/juntagrico/juntagrico.git@fix_fixture
+git+https://github.com/juntagrico/juntagrico.git@depot_list_man
 gunicorn==20.0.4
 psycopg2==2.8.4
