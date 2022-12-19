@@ -174,7 +174,7 @@ SHARE_PRICE = "250"
 
 INFO_EMAIL = "info@gartenkooperative.li"
 SERVER_URL = "meine.gartenkooperative.li"
-STYLES = {'static': ['/gartenkoop/css/customize.css']}
+STYLES = {'static': ['gartenkoop/css/customize.css']}
 
 BUSINESS_REGULATIONS = 'https://www.gartenkooperative.li/wp-content/uploads/171012_Betriebsreglement-der-Genossenschaft-Gartenkooperative-Region-Liechtenstein-Werdenberg.pdf'
 BYLAWS = 'https://www.gartenkooperative.li/wp-content/uploads/2015/11/150226StatutenGartenkooperative.pdf'
@@ -205,7 +205,7 @@ DEFAULT_MAILER = 'gartenkoop.gkmailer.Mailer'
 SERVER_EMAIL = 'info@gartenkooperative.li'
 
 ADMINS = (
-    ('Gako Admin', os.environ.get('GAKO_ADMIN_EMAIL'))
+    ('Gako Admin', os.environ.get('GAKO_ADMIN_EMAIL')),
 )
 
 IMAGES = {
