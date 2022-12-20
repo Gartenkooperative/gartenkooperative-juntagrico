@@ -1,12 +1,7 @@
-{% extends "base.html" %}
+{% extends "mail_sender.html" %}
 {% load i18n %}
 {% load juntagrico.common %}
 {% load juntagrico.config %}
-{% block page_title %}
-    <h3>
-        {% trans "Mails verschicken" %}
-    </h3>
-{% endblock %}
 {% block content %}
     {% vocabulary "subscription" as v_subscription %}
     {% vocabulary "co_member_pl" as v_co_member_pl %}
@@ -22,11 +17,11 @@
             <div class="col-md-10" id="sender-email">
                 <select name="sender" class="form-control">
                     {% for area in area_admin %}
-                        {% if area.email is not None %}
-                            <option value="{{ area.email }}">
-                                {{ area.email }}
+                        {% for email in area.get_emails %}
+                            <option value="{{ email }}">
+                                {{ email }}
                             </option>
-                        {% endif %}
+                        {% endfor %}
                     {% endfor %}
                     {% if can_use_general_email %}
                         <option value="{% config "info_email" %}">
@@ -193,12 +188,4 @@
             </div>
         </div>
     </form>
-{% endblock %}
-{% block scripts %}
-    <script type="text/javascript" src="/static/juntagrico/external/attachment_appender.js">
-    </script>
-    <script type="text/javascript" src="/static/juntagrico/external/tinymce/tinymce.min.js">
-    </script>
-    <script type="text/javascript" src="/static/juntagrico/external/require.min.js" data-main="/static/juntagrico/js/initMailer.js">
-    </script>
 {% endblock %}
