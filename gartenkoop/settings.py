@@ -203,6 +203,7 @@ DEFAULT_MAILER = 'gartenkoop.gkmailer.Mailer'
 
 # Send server emails from this address rather than root@localhost...
 SERVER_EMAIL = 'info@gartenkooperative.li'
+DEFAULT_FROM_EMAIL = SERVER_EMAIL
 
 ADMINS = (
     ('Gako Admin', os.environ.get('GAKO_ADMIN_EMAIL')),
