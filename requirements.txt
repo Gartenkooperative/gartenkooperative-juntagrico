@@ -3,3 +3,4 @@ git+https://github.com/juntagrico/juntagrico.git@preview-li
 gunicorn==20.0.4
 psycopg2==2.8.4
 openpyxl==3.0.7
+django_import_export==3.1.0

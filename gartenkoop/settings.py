@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'adminsortable2',
     'polymorphic',
+    'import_export',
 ]
 
 ROOT_URLCONF = 'gartenkoop.urls'
@@ -232,3 +233,4 @@ ADMINPORTAL_NAME = 'meine.gartekooperative'
 ADMINPORTAL_SERVER_URL = 'meine.gartenkooperative.li'
 STYLE_SHEET = '/static/gartenkoop/css/customize.css'
 
+IMPORT_EXPORT_EXPORT_PERMISSION_CODE = 'view'
