@@ -20,7 +20,6 @@ ALLOWED_HOSTS = ['gartenkoop.juntagrico.science', 'localhost', 'meine.gartenkoop
 # Application definition
 
 INSTALLED_APPS = [
-    'gartenkoop',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -28,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'gartenkoop',
     'juntagrico_stats',
     'juntagrico',
     'impersonate',
@@ -136,13 +136,20 @@ if DEBUG is True:
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.ManifestStaticFilesStorage",
+    },
+}
 
 IMPERSONATE = {
     'REDIRECT_URL': '/my/profile',
 }
 
-LOGIN_REDIRECT_URL = "/my/home"
+LOGIN_REDIRECT_URL = "/"
 
 """
     File & Storage Settings
@@ -174,8 +181,13 @@ ORGANISATION_BANK_CONNECTION = {"PC" : "",
             "ESR" : ""}
 SHARE_PRICE = "250"
 
-INFO_EMAIL = "info@gartenkooperative.li"
-SERVER_URL = "meine.gartenkooperative.li"
+CONTACTS = {
+    "general": "info@gartenkooperative.li"
+}
+ORGANISATION_WEBSITE = {
+    'name': "meine.gartenkooperative.li",
+    'url': "https://meine.gartenkooperative.li"
+}
 STYLES = {'static': ['gartenkoop/css/customize.css']}
 
 BUSINESS_REGULATIONS = 'https://www.gartenkooperative.li/wp-content/uploads/171012_Betriebsreglement-der-Genossenschaft-Gartenkooperative-Region-Liechtenstein-Werdenberg.pdf'
