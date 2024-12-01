@@ -14,6 +14,21 @@ SECRET_KEY = os.environ.get('JUNTAGRICO_SECRET_KEY')
 
 DEBUG = os.environ.get("JUNTAGRICO_DEBUG", 'False')=='True'
 
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'WARNING',
+    },
+}
+
 ALLOWED_HOSTS = ['gartenkoop.juntagrico.science', 'localhost', 'meine.gartenkooperative.li']
 
 
@@ -246,3 +261,5 @@ ADMINPORTAL_SERVER_URL = 'meine.gartenkooperative.li'
 STYLE_SHEET = '/static/gartenkoop/css/customize.css'
 
 IMPORT_EXPORT_EXPORT_PERMISSION_CODE = 'view'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
