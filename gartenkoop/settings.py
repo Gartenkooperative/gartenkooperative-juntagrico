@@ -45,11 +45,12 @@ INSTALLED_APPS = [
     'gartenkoop',
     'juntagrico_stats',
     'juntagrico',
+    'fontawesomefree',
+    'import_export',
     'impersonate',
     'crispy_forms',
     'adminsortable2',
     'polymorphic',
-    'import_export',
 ]
 
 ROOT_URLCONF = 'gartenkoop.urls'
