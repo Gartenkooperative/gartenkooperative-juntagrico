@@ -264,5 +264,3 @@ ADMINPORTAL_SERVER_URL = 'meine.gartenkooperative.li'
 STYLE_SHEET = '/static/gartenkoop/css/customize.css'
 
 IMPORT_EXPORT_EXPORT_PERMISSION_CODE = 'view'
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
