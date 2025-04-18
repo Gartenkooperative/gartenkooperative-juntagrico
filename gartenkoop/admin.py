@@ -1,6 +1,0 @@
-from juntagrico.admins.subscription_admin import SubscriptionAdmin
-
-from gartenkoop.resources.subscription import SubscriptionWithAddressResource
-
-# add export resources
-SubscriptionAdmin.resource_classes.append(SubscriptionWithAddressResource)
