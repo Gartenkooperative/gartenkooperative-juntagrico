@@ -207,14 +207,13 @@ ORGANISATION_WEBSITE = {
 }
 STYLES = {'static': ['gartenkoop/css/customize.css']}
 
-BUSINESS_REGULATIONS = 'https://www.gartenkooperative.li/wp-content/uploads/171012_Betriebsreglement-der-Genossenschaft-Gartenkooperative-Region-Liechtenstein-Werdenberg.pdf'
-BYLAWS = 'https://www.gartenkooperative.li/wp-content/uploads/2015/11/150226StatutenGartenkooperative.pdf'
+BUSINESS_REGULATIONS = 'https://www.gartenkooperative.li/?sdm_process_download=1&download_id=4111'
+BYLAWS = 'https://www.gartenkooperative.li/?sdm_process_download=1&download_id=4110'
 
 MAIL_TEMPLATE = 'mails/email.html'
 
 # needed?
-FAQ_DOC = '/static/juntagrico/doc/fac.pdf'
-EXTRA_SUB_INFO = '/static/juntagrico/doc/extra_sub_info.pdf'
+FAQ_DOC = 'https://www.gartenkooperative.li/?sdm_process_download=1&download_id=4840'
 
 SHARE_PRICE = '250'
 CURRENCY = 'CHF'
