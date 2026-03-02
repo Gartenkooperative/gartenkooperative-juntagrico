@@ -1,0 +1,6 @@
+{% load i18n %}
+{% load juntagrico.config %}
+{% vocabulary "share" as v_share %}
+<div class="alert alert-warning">
+    {% blocktrans %}Mindestens 1 {{ v_share }} ist noch unbezahlt.{% endblocktrans %}
+</div>
