@@ -4,10 +4,10 @@
     {{ block.super }}
     {% if perms.juntagrico.change_assignment %}
         <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#jst">
-                {% trans "Statistik" %}
-                <i class="fas fa-angle-right">
+            <a class="nav-link {% if not request.resolver_match.app_name == 'jst' or not 'view' in request.resolver_match.url_name %} collapsed{% endif %}" data-toggle="collapse" href="#jst">
+                <i class="bi bi-caret-down turn">
                 </i>
+                {% trans "Statistik" %}
             </a>
             <div class="collapse{% if request.resolver_match.app_name == 'jst' and 'view' in request.resolver_match.url_name %} show{% endif %}" id="jst">
                 <ul class="nav flex-column subadmin-menu">

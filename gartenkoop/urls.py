@@ -16,8 +16,8 @@ from django.urls import path
 from django.contrib import admin
 
 urlpatterns = [
-    path(r'admin/', admin.site.urls),
-    path(r'', include('juntagrico.urls')),
-    path(r'impersonate/', include('impersonate.urls')),
+    path('admin/', admin.site.urls),
+    path('', include('juntagrico.urls')),
+    path('impersonate/', include('impersonate.urls')),
     path('stats/', include('juntagrico_stats.urls')),
 ]

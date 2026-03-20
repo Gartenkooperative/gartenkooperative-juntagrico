@@ -3,6 +3,7 @@ Django settings for gartenkoop project.
 """
 
 import os
+from juntagrico import defaults
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -29,7 +30,8 @@ LOGGING = {
     },
 }
 
-ALLOWED_HOSTS = ['gartenkoop.juntagrico.science', 'localhost', 'meine.gartenkooperative.li']
+if not DEBUG:
+    ALLOWED_HOSTS = ['gartenkoop.juntagrico.science', 'meine.gartenkooperative.li']
 
 
 # Application definition
@@ -45,12 +47,14 @@ INSTALLED_APPS = [
     'gartenkoop',
     'juntagrico_stats',
     'juntagrico',
-    'fontawesomefree',
     'import_export',
     'impersonate',
     'crispy_forms',
+    'crispy_bootstrap4',
     'adminsortable2',
     'polymorphic',
+    'django_select2',
+    'djrichtextfield',
 ]
 
 ROOT_URLCONF = 'gartenkoop.urls'
@@ -85,7 +89,6 @@ TEMPLATES = [
                 'django.template.loaders.filesystem.Loader',
                 'django.template.loaders.app_directories.Loader'
             ],
-            'debug' : True
         },
     },
 ]
@@ -134,8 +137,6 @@ EMAIL_PORT = int(os.environ.get('JUNTAGRICO_EMAIL_PORT', '25' ))
 EMAIL_USE_TLS = os.environ.get('JUNTAGRICO_EMAIL_TLS', 'False')=='True'
 EMAIL_USE_SSL = os.environ.get('JUNTAGRICO_EMAIL_SSL', 'False')=='True'
 
-SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
-
 WHITELIST_EMAILS = []
 
 def whitelist_email_from_env(var_env_name):
@@ -181,6 +182,12 @@ MEDIA_ROOT = 'media'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 """
+     Richtext Settings
+"""
+
+DJRICHTEXTFIELD_CONFIG = defaults.richtextfield_config(LANGUAGE_CODE)
+
+"""
      juntagrico Settings
 """
 ORGANISATION_NAME = "Gartenkooperative"
@@ -205,12 +212,15 @@ ORGANISATION_WEBSITE = {
     'name': "meine.gartenkooperative.li",
     'url': "https://meine.gartenkooperative.li"
 }
+
+VOCABULARY = {
+    'from': '{} von der {}'
+}
+
 STYLES = {'static': ['gartenkoop/css/customize.css']}
 
 BUSINESS_REGULATIONS = 'https://www.gartenkooperative.li/?sdm_process_download=1&download_id=4111'
 BYLAWS = 'https://www.gartenkooperative.li/?sdm_process_download=1&download_id=4110'
-
-MAIL_TEMPLATE = 'mails/email.html'
 
 # needed?
 FAQ_DOC = 'https://www.gartenkooperative.li/?sdm_process_download=1&download_id=4840'
@@ -231,7 +241,11 @@ MEMBERSHIP_END_NOTICE_PERIOD = 2
 ENABLE_REGISTRATION = False
 
 # USe a custom mailer that only sends to max 20 recipients at a time in the bcc, to or cc lists.
-DEFAULT_MAILER = 'gartenkoop.gkmailer.Mailer'
+EMAIL_BACKEND='juntagrico.backends.email.BatchEmailBackend'
+BATCH_MAILER = {
+    'batch_size': 20,
+    'wait_time': 0
+}
 
 # Send server emails from this address rather than root@localhost...
 SERVER_EMAIL = 'info@gartenkooperative.li'
@@ -240,18 +254,6 @@ DEFAULT_FROM_EMAIL = SERVER_EMAIL
 ADMINS = (
     ('Gako Admin', os.environ.get('GAKO_ADMIN_EMAIL')),
 )
-
-IMAGES = {
-    'status_100': '/static/juntagrico/img/status_100.png',
-    'status_75': '/static/juntagrico/img/status_75.png',
-    'status_50': '/static/juntagrico/img/status_50.png',
-    'status_25': '/static/juntagrico/img/status_25.png',
-    'status_0': '/static/juntagrico/img/status_0.png',
-    'single_full': '/static/juntagrico/img/single_full.png',
-    'single_empty': '/static/juntagrico/img/single_empty.png',
-    'single_core': '/static/juntagrico/img/single_core.png',
-    'core': '/static/juntagrico/img/core.png',
-}
 
 IMPERSONATE = {
     'ALLOW_SUPERUSER': True
@@ -264,3 +266,11 @@ ADMINPORTAL_SERVER_URL = 'meine.gartenkooperative.li'
 STYLE_SHEET = '/static/gartenkoop/css/customize.css'
 
 IMPORT_EXPORT_EXPORT_PERMISSION_CODE = 'view'
+
+
+# Staging
+if os.environ.get('JUNTAGRICO_STAGING') == '1':
+    # staging URL erlauben
+    ALLOWED_HOSTS.append('gartenkoop-staging.juntagrico.science')
+    # E-Mails Deaktivieren
+    EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
